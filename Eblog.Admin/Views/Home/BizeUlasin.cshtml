@@ -1,0 +1,75 @@
+﻿@model Eblog.Data.Model.bizeulasin
+
+@{
+    ViewBag.Title = "Bize Ulaşın";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+
+}
+
+
+<header class="entry-header">
+    <h1 class="entry-title">Bize Ulaşın</h1>
+</header>
+
+
+<!-- .entry-content -->
+<div class="entry-content">
+    @using (Html.BeginForm("BizeUlasin", "Home", FormMethod.Post, new { enctype = "multipart/form-data", id = "BizeUlasinForm" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary()
+        <p>Bize soracabileceğin herşeyi sormanı tüm samimiyetimizle bekliyoruz.</p>
+
+        <!-- .contact-form -->
+        <div class="contact-form">
+
+            <form id="contact-form" class="validate-form">
+
+                <div class="form-group">
+                    <label for="text">Adı Soyadı *</label>
+                    @Html.TextBoxFor(x => x.Adisoyadi, new { @class = "form-control border-input", id = "adisoyadi", placeholder = "Adı Ve Soyadı", required = "required" })
+                </div>
+                <div class="form-group">
+                    <label for="text">E-Mail *</label>
+                    @Html.TextBoxFor(x => x.Email, new { @class = "form-control border-input", id = "email", placeholder = "E-Mail Adresiniz", type = "email", required = "required" })
+                </div>
+                <div class="form-group">
+                    <label for="text">Mesaj</label>
+                    @Html.TextAreaFor(x => x.Mesaj, new { @class = "form-control border-input", id = "mesaj", placeholder = "Mesajınızı En Fazla 500 Karakter olacak şekilde yazınız.", required = "required" })
+                </div>
+
+                <br />
+                <button type="submit" class="btn btn-default" id="BizeUasinEkle">Kaydet</button>
+            </form>
+
+        </div>
+        <!-- .contact-form -->
+
+    }
+</div>
+<!-- .entry-content -->
+
+
+<script>
+    $(document).ready(function () {
+        $(document).on("click", "#BizeUasinEkle", function () {
+            $('#BizeUlasinForm').ajaxForm({
+                success: function (response) {
+                    if (response.Success) {
+                        bootbox.alert(response.Message, function () {
+                            location.href = "/Home/Index";
+                        });
+
+                    }
+                    else {
+                        bootbox.alert(response.Message, function () {
+                            // geridöndüğünde bir şey yapılması isteniyorsa buraya yazılır
+                        });
+                    }
+                }
+            })
+        })
+    })
+</script>
+
+

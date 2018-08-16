@@ -1,0 +1,15 @@
+C:\Users\EMREYILDIRIM\Documents\Visual Studio 2017\Projects\Eblog\Eblog.Core\bin\Release\Eblog.Core.dll.config
+C:\Users\EMREYILDIRIM\Documents\Visual Studio 2017\Projects\Eblog\Eblog.Core\bin\Release\Eblog.Core.dll
+C:\Users\EMREYILDIRIM\Documents\Visual Studio 2017\Projects\Eblog\Eblog.Core\bin\Release\Eblog.Core.pdb
+C:\Users\EMREYILDIRIM\Documents\Visual Studio 2017\Projects\Eblog\Eblog.Core\bin\Release\Eblog.Data.dll
+C:\Users\EMREYILDIRIM\Documents\Visual Studio 2017\Projects\Eblog\Eblog.Core\bin\Release\EntityFramework.dll
+C:\Users\EMREYILDIRIM\Documents\Visual Studio 2017\Projects\Eblog\Eblog.Core\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\EMREYILDIRIM\Documents\Visual Studio 2017\Projects\Eblog\Eblog.Core\bin\Release\Eblog.Data.pdb
+C:\Users\EMREYILDIRIM\Documents\Visual Studio 2017\Projects\Eblog\Eblog.Core\bin\Release\Eblog.Data.dll.config
+C:\Users\EMREYILDIRIM\Documents\Visual Studio 2017\Projects\Eblog\Eblog.Core\bin\Release\EntityFramework.xml
+C:\Users\EMREYILDIRIM\Documents\Visual Studio 2017\Projects\Eblog\Eblog.Core\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\EMREYILDIRIM\Documents\Visual Studio 2017\Projects\Eblog\Eblog.Core\obj\Release\Eblog.Core.csprojResolveAssemblyReference.cache
+C:\Users\EMREYILDIRIM\Documents\Visual Studio 2017\Projects\Eblog\Eblog.Core\obj\Release\Eblog.Core.csproj.CoreCompileInputs.cache
+C:\Users\EMREYILDIRIM\Documents\Visual Studio 2017\Projects\Eblog\Eblog.Core\obj\Release\Eblog.Core.csproj.CopyComplete
+C:\Users\EMREYILDIRIM\Documents\Visual Studio 2017\Projects\Eblog\Eblog.Core\obj\Release\Eblog.Core.dll
+C:\Users\EMREYILDIRIM\Documents\Visual Studio 2017\Projects\Eblog\Eblog.Core\obj\Release\Eblog.Core.pdb

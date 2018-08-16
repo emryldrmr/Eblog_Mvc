@@ -1,0 +1,122 @@
+﻿<nav id="primary-navigation" class="site-navigation primary-navigation" role="navigation">
+
+    <!-- layout-medium -->
+    <div class="layout-medium">
+
+
+
+
+        <!-- site-title : image-logo -->
+        <h1 class="site-title">
+            <a href="/Home/Index/" rel="home">
+                @*<img src="~/User/images/site/logo.png" alt="logo">*@
+                <img src="~/images/logo2.png" alt="logo">
+                <span class="screen-reader-text">E-BİLGE.NET</span>
+            </a>
+        </h1>
+        <!-- site-title -->
+        <!-- site-title : text-logo -->
+        <!--<h1 class="site-title">
+            <a href="../index.html" rel="home">
+                Haley Dust
+            </a>
+        </h1>-->
+        <!-- site-title -->
+
+
+
+
+        <a class="menu-toggle"><span class="lines"></span></a>
+
+        <!-- nav-menu -->
+        <div class="nav-menu">
+            <ul>
+                <li>
+                    <a href="@Url.Action("Index", "Home")">Anasayfa</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Blog")">Blog</a>
+                    <!-- level 2 -->
+                    <ul>
+                        <li>
+                            <a href="@Url.Action("Ekle", "Makale")">Makale Ekle</a>
+                        </li>
+                        @if (Convert.ToInt32(Session["Rol"]) == 1 || Convert.ToInt32(Session["Rol"]) == 2)
+                        {
+                            <li>
+                                <a href="@Url.Action("Index", "Kategori")">Kategori Listesi</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Index", "Makale")">Makale Listesi</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Index", "Kullanici")">Kullanıcı Listesi</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Index", "Yorum")">Yorumlar</a>
+                            </li>
+                        }
+
+                    </ul>
+                    <!-- level 2 -->
+                </li>
+                <li><a href="@Url.Action("Hakkimizda", "Home")">Hakkımızda</a></li>
+                <li><a href="@Url.Action("BizeUlasin", "Home")">Bize Ulaşın</a></li>
+                @if (Session["ID"] != null)
+                {
+                    <li><a href="/Home/ProfilGoster/@Session["ID"]">@Session["AdSoyad"]<b style="font-size:xx-small"> (@Session["YetkiAdi"])</b></a></li>
+                    <li><a class="sign" href="@Url.Action("Cikis", "Home")">Güvenli Çıkış</a></li>
+
+
+                }
+                else
+                {
+
+                    <li>
+                        <a href="@Url.Action("Login","Home")">Giriş Yap</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Kayit","Home")">Kayıt Ol</a>
+                    </li>
+
+                }
+            </ul>
+        </div>
+        <!-- nav-menu -->
+
+        <a class="search-toggle toggle-link"></a>
+
+        <!-- search-container -->
+        <div class="search-container">
+
+            <div class="search-box" role="search">
+                @using (Html.BeginForm("Ara", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <form method="get" class="search-form" action="#">
+                        <label>
+                            Ara
+                            <input type="text" id="Ara" placeholder="Makale Başlıkları içinde Arama" name="Ara">
+                        </label>
+                        <button type="submit" value="Ara" class="search-submit" title="Aramalarınız Makale Başlık Olarak Sıralanacaktır."><i class="fa fa-search"></i></button>
+                    </form>
+                }
+            </div>
+
+        </div>
+        <!-- search-container -->
+        <!-- social-container -->
+        <div class="social-container">
+
+            <a class="social-link facebook" href="https://www.facebook.com/"></a>
+            <a class="social-link twitter" href="https://twitter.com/"></a>
+            <a class="social-link dribbble" href="#"></a>
+            <a class="social-link instagram" href="https://www.instagram.com/"></a>
+
+        </div>
+        <!-- social-container -->
+
+
+    </div>
+    <!-- layout-medium -->
+
+</nav>

@@ -1,0 +1,88 @@
+﻿@model PagedList.IPagedList<Eblog.Data.Model.makale>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Ara";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<div id="primary" class="content-area with-sidebar">
+    <!-- site-content -->
+    <div id="content" class="site-content" role="main">
+        <!-- BLOG LIST -->
+        <h2>Aradığınız içerikteki makaleler listelenmiştir.</h2>
+        <div class="blog-list  blog-stream">
+            @foreach (var item in Model)
+        {
+            <article class="hentry post has-post-thumbnail">
+
+                <!-- .featured-image -->
+                <div class="featured-image">
+                    <a href="@Url.Action("Detay", "Makale", new { ID = item.ID })"><img src="@item.Foto" alt="@item.Baslik" width="250px" height="250px"></a>
+                </div>
+                <!-- .featured-image -->
+                <!-- .hentry-middle -->
+                <div class="hentry-middle">
+
+                    <!-- .entry-header -->
+                    <header class="entry-header">
+
+                        <!-- .entry-meta -->
+                        <div class="entry-meta">
+                            <span class="cat-links">
+                                <a href="#" title="View all posts in Adventure" rel="category tag">@item.kategori.KategoriAdi</a>
+                            </span>
+                            <span class="entry-date">
+                                <time class="entry-date">@item.Tarih.Substring(0, 10)</time>
+                            </span>
+                            <i class="">
+                                <a href="@Url.Action("Detay", "Makale", new { ID = item.ID })">@item.Okunma</a>
+                            </i>
+                        </div>
+                        <!-- .entry-meta -->
+                        <!-- .entry-title -->
+                        <h2 class="entry-title"><a href="@Url.Action("Detay", "Makale", new { ID = item.ID })">@item.Baslik</a></h2>
+
+                    </header>
+                    <!-- .entry-header -->
+                    <!-- .entry-content -->
+                    <div class="entry-content">
+
+                        @if (string.IsNullOrEmpty(item.Icerik) == false && item.Icerik.Length > 250)
+                    {
+                        <p>
+                            @Html.Raw(item.Icerik.Substring(0, 250) + "...")
+                        </p>
+                        <p style="text-align:left">
+                            <a href="@Url.Action("Detay", "Makale", new { ID = item.ID })" class="more-link">devamı <i class="ti-control-forward"></i></a>
+                        </p>
+                }
+                else
+                {
+                    <p>@Html.Raw(item.Icerik)</p>
+            }
+
+                    </div>
+                    <!-- .entry-content -->
+
+                </div>
+                <!-- .hentry-middle -->
+
+
+            </article>
+    }
+        </div>
+        <!-- BLOG LIST -->
+        <!-- post pagination -->
+        <nav class="post-pagination">
+            <ul class="pagination">
+                @Html.PagedListPager(Model, Sayfa => Url.Action("Index", new { Sayfa }), PagedListRenderOptions.Classic)
+            </ul>
+        </nav>
+        <!-- post pagination -->
+
+    </div>
+    <!-- site-content -->
+
+</div>
+@Html.Partial("_UserRightS")

@@ -1,0 +1,273 @@
+﻿@model PagedList.IPagedList<Eblog.Data.Model.makale>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Anasayfa";
+    Layout = null;
+}
+
+<!doctype html>
+<html lang="en" class="minimal-style is-menu-fixed is-always-fixed is-selection-shareable blog-animated header-light header-small" data-effect="slideUp">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="keywrods">
+    <meta name="keywords" content="text">
+    <meta name="author" content="BAŞLIK, mail[at]mail.net">
+    <!-- FAV and TOUCH ICONS -->
+    <link rel="shortcut icon" href="../images/favicon.ico">
+    <link rel="apple-touch-icon" href="~/images/favicon.png" />
+    <SCRIPT LANGUAGE='JavaScript'>
+
+        var default1 = "BAŞLIK | ";
+        var text1 = "BAŞLIK | BAŞLIK";
+        var text2 = "BAŞLIK | BAŞLIK";
+        var text3 = "BAŞLIK | BAŞLIK";
+        var changeRate = 2000; // 1000 = 1 second
+        var messageNumber = 0;
+
+        function changeStatus() {
+            if (messageNumber == 0) {
+                window.status = default1;
+                document.title = default1;
+            }
+            else if (messageNumber == 1) {
+                window.status = text1;
+                document.title = text1;
+            }
+            else if (messageNumber == 2) {
+                window.status = text2;
+                document.title = text2;
+            }
+            else if (messageNumber == 3) {
+                window.status = text3;
+                document.title = text3;
+                messageNumber = 0;
+            }
+
+            messageNumber++;
+            setTimeout("changeStatus();", changeRate);
+
+        }
+
+        changeStatus();
+
+    </SCRIPT>
+    <title>.: BAŞLIK :. | TEXT | TEXT | TEXT</title>
+
+
+
+    <!-- FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Noto+Sans:400,400i,700,700i|Poppins:300,400,500,600,700" rel="stylesheet">
+
+    <!-- STYLES -->
+    <link href="~/User/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/User/css/fonts/fontello/css/fontello.css" rel="stylesheet" type="text/css" />
+    <link href="~/User/js/jquery.magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css" />
+    <link href="~/User/js/jquery.fluidbox/fluidbox.css" rel="stylesheet" type="text/css" />
+    <link href="~/User/js/owl-carousel/owl.carousel.css" rel="stylesheet" type="text/css" />
+    <link href="~/User/js/selection-sharer/selection-sharer.css" rel="stylesheet" type="text/css" />
+    <link href="~/User/css/rotate-words.css" rel="stylesheet" type="text/css" />
+    <link href="~/User/css/align.css" rel="stylesheet" type="text/css" />
+    <link href="~/User/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="~/User/js/shortcodes/shortcodes.css" rel="stylesheet" type="text/css" />
+    <link href="~/User/css/768.css" rel="stylesheet" type="text/css" />
+    <link href="~/User/css/992.css" rel="stylesheet" type="text/css" />
+
+
+    <script src="~/User/js/jquery-3.1.1.min.js"></script>
+    <!-- INITIAL SCRIPTS -->
+    <script src="~/User/js/modernizr.min.js"></script>
+</head>
+<body class="  ">
+    <!-- page -->
+    <div id="page" class="hfeed site">
+
+        <!-- header -->
+        <header id="masthead" class="site-header" role="banner">
+            <!-- site-navigation -->
+            @Html.Partial("_Sign")
+            <!-- site-navigation -->
+        </header>
+        <!-- header -->
+        <!-- site-main -->
+        <div id="main" class="site-main">
+            <!-- InstanceBeginEditable name="TopContent" -->
+            <!-- InstanceEndEditable -->
+            <div class="layout-medium">
+                <div id="primary" class="content-area">
+                    <!-- site-content -->
+                    <div id="content" class="site-content" role="main">
+
+
+                        <!-- InstanceBeginEditable name="PageContent" -->
+                        <!-- .hentry -->
+                        <article class="hentry page">
+
+
+                            <!-- .entry-content -->
+                            <div class="entry-content intro" data-animation="rotate-1">
+                                <br /><br />
+                                <h2><em>BAŞLIK</em><br /></h2>
+                                <h3><strong>eğitim</strong> <strong>bilim</strong> <strong>gelişim</strong></h3>
+
+
+                            </div>
+                            <!-- .entry-content -->
+
+
+
+                        </article>
+                        <!-- .page -->
+                        <!-- .home-title -->
+                        <h3 class="widget-title home-title">Son Makaleler</h3>
+
+
+                        <!-- BLOG SIMPLE -->
+                        <div class="blog-simple">
+                            @foreach (var item in Model)
+                            {
+                                <!-- .hentry -->
+                                <article class="hentry post has-post-thumbnail">
+
+                                    <!-- .hentry-left -->
+                                    <div class="hentry-left">
+                                        <div class="entry-date">
+                                            <span class="day">@item.Tarih.Substring(0, 2)</span>
+                                            <span class="month">@item.Tarih.Substring(3, 2)</span>
+                                            <span class="year">@*@item.Tarih.Substring(6, 10)*@</span>
+                                        </div>
+                                        <div class="featured-image" style="background-image:url(~/User/images/blog/06.jpg)"></div>
+                                    </div>
+                                    <!-- .hentry-left -->
+                                    <!-- .hentry-middle -->
+                                    <div class="hentry-middle">
+
+                                        <!-- .entry-title -->
+                                        <h2 class="entry-title"><a href="@Url.Action("Detay", "Makale", new { ID = item.ID })">@item.Baslik</a></h2>
+
+                                    </div>
+                                    <!-- .hentry-middle -->
+
+                                    <a class="post-link" href="@Url.Action("Detay", "Makale", new { ID = item.ID })">@item.Baslik</a>
+
+                                </article>
+                                <!-- .hentry -->
+                            }
+                            <nav class="post-pagination">
+                                <ul class="pagination">
+                                    @Html.PagedListPager(Model, Sayfa => Url.Action("Index", new { Sayfa }), PagedListRenderOptions.Classic)
+                                </ul>
+                            </nav>
+                        </div>
+                        <!-- BLOG SIMPLE -->
+                        <!-- .home-launch -->
+                        <div class="home-launch">
+                            <a class="button" href="@Url.Action("Index","Blog")">Tüm Makaleleri Gör</a>
+                        </div>
+                        <!-- .home-launch -->
+                        <!-- InstanceEndEditable -->
+
+
+                    </div>
+                    <!-- site-content -->
+
+                </div>
+                <!-- primary -->
+
+            </div>
+            <!-- layout -->
+
+
+        </div>
+        <!-- site-main -->
+        <!-- site-footer -->
+        <footer id="colophon" class="site-footer" role="contentinfo">
+
+            <!-- layout-medium -->
+            <div class="layout-medium">
+
+
+                <!-- site-title-wrap -->
+                <div class="site-title-wrap">
+
+                    <h1 class="site-title">
+                        <a href="@Url.Action("Index","Home")" rel="home">
+                            @*<img src="~/User/images/site/logo.png" alt="logo">*@
+                            <img src="~/images/logo2.png" alt="logo">
+                        </a>
+                    </h1>
+                    <!-- site-title -->
+
+                    <p class="site-description">Eğitim - Bilim - Gelişim</p>
+
+                </div>
+                <!-- site-title-wrap -->
+                <!-- footer-social -->
+                <div class="footer-social">
+
+                    <div class="textwidget">
+                        <a class="social-link facebook" href="https://www.facebook.com/"></a>
+                        <a class="social-link twitter" href="https://twitter.com/"></a>
+                        <a class="social-link dribbble" href="#"></a>
+                        <a class="social-link instagram" href="https://www.instagram.com/"></a>
+                    </div>
+
+                </div>
+
+
+            </div>
+            <!-- layout-medium -->
+            <!-- .site-info -->
+            <div class="site-info">
+
+                <!-- layout-medium -->
+                <div class="layout-medium">
+
+                    <div class="textwidget">@DateTime.Now.Year &emsp;Tüm Hakları Saklıdır.<i class="pw-icon-heart"></i> <em>by</em>BAŞLIK</div>
+
+                </div>
+                <!-- layout-medium -->
+
+            </div>
+            <!-- .site-info -->
+
+
+
+        </footer>
+        <!-- site-footer -->
+
+    </div>
+    <!-- page -->
+    <!-- SCRIPTS -->
+    <script src="../../ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+        if (!window.jQuery) {
+            document.write('<script src="~/User/js/jquery-3.1.1.min.js"><\/script>');
+        }
+
+    </script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/bootbox.min.js"></script>
+    <script src="~/User/js/jquery-migrate-3.0.0.min.js"></script>
+    <script src="~/User/js/fastclick.js"></script>
+    <script src="~/User/js/jquery.fitvids.js"></script>
+    <script src="~/User/js/jquery.viewport.mini.js"></script>
+    <script src="~/User/js/jquery.waypoints.min.js"></script>
+    <script src="~/User/js/jquery-validation/jquery.validate.min.js"></script>
+    <script src="~/User/js/imagesloaded.pkgd.min.js"></script>
+    <script src="~/User/js/jquery.isotope.min.js"></script>
+    <script src="~/User/js/jquery.magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="~/User/js/jquery.fluidbox/jquery.fluidbox.min.js"></script>
+    <script src="~/User/js/owl-carousel/owl.carousel.min.js"></script>
+    <script src="~/User/js/selection-sharer/selection-sharer.js"></script>
+    <script src="~/User/js/socialstream.jquery.js"></script>
+    <script src="~/User/js/jquery.collagePlus/jquery.collagePlus.min.js"></script>
+    <script src="~/User/js/main.js"></script>
+    <script src="~/User/js/shortcodes/shortcodes.js"></script>
+
+</body>
+
+</html>
+

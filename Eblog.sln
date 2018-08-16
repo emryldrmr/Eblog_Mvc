@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.7
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eblog.Data", "Eblog.Data\Eblog.Data.csproj", "{A5C06E0E-B13E-45BC-88E8-DE0765F6DC6D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eblog.Core", "Eblog.Core\Eblog.Core.csproj", "{571D2295-70DB-4C8A-8E55-AB1FE76A84B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eblog.Admin", "Eblog.Admin\Eblog.Admin.csproj", "{C1FE65ED-3977-434B-AB6E-EF898908193C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A5C06E0E-B13E-45BC-88E8-DE0765F6DC6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5C06E0E-B13E-45BC-88E8-DE0765F6DC6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5C06E0E-B13E-45BC-88E8-DE0765F6DC6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5C06E0E-B13E-45BC-88E8-DE0765F6DC6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{571D2295-70DB-4C8A-8E55-AB1FE76A84B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{571D2295-70DB-4C8A-8E55-AB1FE76A84B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{571D2295-70DB-4C8A-8E55-AB1FE76A84B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{571D2295-70DB-4C8A-8E55-AB1FE76A84B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1FE65ED-3977-434B-AB6E-EF898908193C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1FE65ED-3977-434B-AB6E-EF898908193C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1FE65ED-3977-434B-AB6E-EF898908193C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1FE65ED-3977-434B-AB6E-EF898908193C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

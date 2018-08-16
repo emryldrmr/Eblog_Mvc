@@ -1,0 +1,69 @@
+﻿<div class="left-sidebar">
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        @if (Convert.ToInt32(Session["Rol"]) == 1 || Convert.ToInt32(Session["Rol"]) == 2)
+        {
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingOne">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Yönetici Menü
+                            <i class="fa fa-angle-right"></i>
+                            <i class="fa fa-angle-down"></i>
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="panel-body">
+                        <ul>
+                            <li>
+                                <a href="@Url.Action("Index", "Kategori")" style="font-size:large">
+                                    <i class="fa fa-list">&emsp;Kategori</i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Index", "Makale")" style="font-size:large">
+                                    <i class="fa fa-book">&emsp;Makale</i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Index", "Kullanici")" style="font-size:large">
+                                    <i class="fa fa-user">&emsp;Kullanıcı</i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Index", "Yorum")" style="font-size:large">
+                                    <i class="fa fa-comment">&emsp;Yorum</i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        }
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingOne">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                        Menü
+                        <i class="fa fa-angle-right"></i>
+                        <i class="fa fa-angle-down"></i>
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                <div class="panel-body">
+                    <ul>
+                        <li>
+                            <a href="@Url.Action("Ekle", "Makale")" style="font-size:large">
+                                <i class="fa fa-book">&emsp;Makale Ekle</i>
+                            </a>
+                            <a href="#" style="font-size:large">
+                                <i class="fa fa-magnet">&emsp;Makalelerim</i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

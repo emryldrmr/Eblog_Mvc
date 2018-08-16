@@ -1,0 +1,92 @@
+﻿@model Eblog.Data.Model.makale
+
+@{
+    ViewBag.Title = "Makale Ekle";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<script src="~/ckeditor/ckeditor.js"></script>
+<style>
+    .bootstrap-tagsinput {
+        width: 100%
+    }
+</style>
+
+<div class="entry-content">
+    <!-- Basic form -->
+
+    @using (Html.BeginForm("Ekle", "Makale", FormMethod.Post, new { enctype = "multipart/form-data", id = "MakaleForm" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary()
+
+        <div class="page-form">
+
+            <form id="form" class="validate-form">
+                <div class="form-group col-lg-6">
+                    <label for="text">Makale Başlık</label>
+                    @Html.TextBoxFor(x => x.Baslik, new { @class = "form-control border-input", id = "makalebaslik", placeholder = "Makale Başlık" })
+                </div>
+                <div class="form-group col-lg-6">
+                    <label for="rol">Kategori</label>
+                    @Html.DropDownListFor(model => model.KategoriID, new SelectList(ViewBag.Kategori, "ID", "KategoriAdi"), ("Seçiniz"), new { @class = "form-control border-input", id = "KategoriID" })
+                </div>
+                <br />
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Vitrin Resmi</label>
+                    <input type="file" name="vitrinResmi" accept="image/*" class="form-control" />
+                    <h6 style="color:red">Dosya boyutu 2 MB'yi geçmemelidir.</h6>
+                </div>
+                <br />
+
+                <div class="form-group">
+                    <label for="exampleInputPassword1">İçerik</label>
+                    @Html.TextArea("Icerik")
+                    <script type="text/javascript">
+                        var editor = CKEDITOR.instances['Icerik'];
+                        if (editor) {
+                            editor.destroy(true);
+                        }
+                        CKEDITOR.replace('Icerik', { enterMode: CKEDITOR.ENTER_BR, });
+                    </script>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Etiket</label>
+                    <input type="text" name="Etiket" data-role="tagsinput" class="form-control" />
+                </div>
+
+                @if (Convert.ToInt32(Session["Rol"]) == 1 || Convert.ToInt32(Session["Rol"]) == 2)
+                {
+                    <div class="checkbox col-md-12">
+                        @Html.CheckBoxFor(x => x.Onay, new { @checked = "checked", id = "makaleOnay" }) Onay ?
+                    </div>
+                }
+                <br />
+                <button type="submit" class="btn btn-default" id="MakaleEkle">Kaydet</button>
+
+            </form>
+        </div>
+    }
+</div>
+
+<script>
+    $(document).ready(function () {
+        $(document).on("click", "#MakaleEkle", function () {
+            $('#MakaleForm').ajaxForm({
+                success: function (response) {
+                    if (response.Success) {
+                        bootbox.alert(response.Message, function () {
+                            location.href = "/Home/Index";
+                        });
+
+                    }
+                    else {
+                        bootbox.alert(response.Message, function () {
+                            // geridöndüğünde bir şey yapılması isteniyorsa buraya yazılır
+                        });
+                    }
+                }
+            })
+        })
+    })
+</script>

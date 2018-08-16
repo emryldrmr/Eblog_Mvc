@@ -1,0 +1,12 @@
+﻿@model List<Eblog.Data.Model.kategori>
+
+
+<ul>
+    <li class="cat-item"><a href="/Blog/Index/" title="Tüm Kategoriler">Tümü</a></li>
+</ul>
+@foreach (var item in Model)
+{
+    <ul>
+        <li class="cat-item"><a href="/Blog/ByKategori/@item.ID" title="@item.KategoriAdi">@item.KategoriAdi</a></li>
+    </ul>
+}

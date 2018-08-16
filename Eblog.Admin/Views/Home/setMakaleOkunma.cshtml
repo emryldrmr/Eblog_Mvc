@@ -1,0 +1,18 @@
+﻿@model List<Eblog.Data.Model.makale>
+
+
+
+@foreach (var item in Model)
+{
+    <ul>
+        <li>
+            <a href="@Url.Action("Detay", "Makale", new { ID = item.ID })">
+                <img src="@item.Foto" alt="@item.Baslik" class="tptn_thumb" width="150px" height="150px">
+            </a>
+            <span class="tptn_after_thumb">
+                <a href="@Url.Action("Detay", "Makale", new { ID = item.ID })" class="tptn_link"><span class="tptn_title">@item.Baslik&nbsp;<b style="font-size:xx-small">(@item.Okunma)</b></span></a>
+                <span class="tptn_date"> @item.Tarih.Substring(0, 10)</span>
+            </span>
+        </li>
+    </ul>
+}

@@ -1,0 +1,39 @@
+﻿@model Eblog.Data.Model.kullanici
+
+@{
+    ViewBag.Title = "Profil Göster";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <p>
+                            <a href="/Home/ProfilDuzenle/@Session["ID"]" title="Profili Düzenle" style="float:right" class="btn btn-success"><i class="glyphicon glyphicon-user">&nbsp;Profili Düzenle&nbsp;</i></a>
+                        </p>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1"></div>
+                            <div class="col-md-3">
+                                <img src="@Model.Foto" alt="@Model.AdSoyad" class="img-circle" width="128" height="128" />
+                            </div>
+                            <div class="col-md-8">
+                                <h3>@(Model.AdSoyad)</h3>
+                                <br />
+                                <h5><b>@Html.DisplayNameFor(model => model.AdSoyad) : </b>@Model.AdSoyad</h5>
+                                <h5><b>@Html.DisplayNameFor(model => model.Email) : </b>@Model.Email</h5>
+                                <br />
+                                <h5><a href="@Url.Action("Index","Home")">More... </a></h5>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+

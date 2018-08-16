@@ -1,0 +1,34 @@
+﻿@model List<Eblog.Data.Model.makale>
+
+
+@foreach (var item in Model)
+{
+    <div class="col-md-12 col-sm-6">
+        <a href="@Url.Action("Detay", "Makale", new { ID = item.ID })"><img src="@item.Foto" alt="@item.Baslik" width="210px" height="150px" /></a>
+        <div class="carousel-caption">
+            <a href="#"><h5 class="post-title"></h5></a>
+            <div class="post-meta">
+                <span><a href="#"><i class="fa fa-calendar-check-o post-meta-icon"></i> @item.Tarih.Substring(0, 10) </a></span>
+                <span><a href="#"><i class="fa fa-user post-meta-icon"></i> @item.Kullanici.AdSoyad </a></span>
+            </div>
+            <div class="post-content no-border">
+                @if (string.IsNullOrEmpty(item.Icerik) == false && item.Icerik.Length > 500)
+                {
+                    <p>
+                        @Html.Raw(item.Icerik.Substring(0, 500) + "...")
+                    </p>
+                    <p style="text-align:left">
+                        <a href="@Url.Action("Detay", "Makale", new { ID = item.ID })" class="btn btn-default btn-sm">devamı <i class="ti-control-forward"></i></a>
+                    </p>
+
+
+                }
+                else
+                {
+                    <p>@Html.Raw(item.Icerik)</p>
+                }
+            </div>
+        </div>
+    </div>
+
+}

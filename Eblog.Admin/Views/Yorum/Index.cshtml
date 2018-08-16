@@ -1,0 +1,110 @@
+﻿@model PagedList.IPagedList<Eblog.Data.Model.yorum>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Yorum Listesi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        
+                    </div>
+                    <div class="content table-responsive table-full-width">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Tarih</th>
+                                    <th>Kullanıcı</th>
+                                    <th>Makale</th>
+                                    <th>Durum</th>
+                                    <th>&emsp;&emsp;İşlemler</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                <tr>
+                                    <td><span class="label label-success">@item.ID</span></td>
+                                    <td>@item.Tarih</td>
+                                    <td>@item.kullanici.AdSoyad</td>
+                                    <td>@item.makale.Baslik</td>
+                                    <td>
+                                        @if (item.Onay == true)
+        {
+                                <b class="label label-success">Aktif</b>
+}
+else
+{
+                                <b class="label label-danger">Pasif</b>
+}
+                                    </td>
+
+                                    <td>
+                                        <a href="@Url.Action("Onay","Yorum", new {ID=item.ID })" class="btn btn-success"><i class="ti-check"></i></a>
+
+                                        <a href="#" data-id="@item.ID" id="YorumSil" class="btn btn-danger"><i class="ti-eraser"></i></a>
+                                    </td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            @Html.PagedListPager(Model, Sayfa => Url.Action("Index", new { Sayfa }), PagedListRenderOptions.Classic)
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    $(document).on("click", "#YorumSil", function () {
+
+        gelenYorum = new Object();
+        gelenYorum.ID = $(this).attr("data-id");
+
+        var silTR = $(this).closest("tr");
+        swal(
+            {
+                title: "Yorum Silinecek !",
+                text: "Silmek İstediğinize Emin misiniz?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DDD6B55",
+                confirmbuttonText: "Evet, Sil",
+                closeOnConfirm: true
+            },
+            function (isConfirm) {
+                if (isConfirm) {
+                    $.ajax({
+                        url: '/Yorum/Sil',
+                        type: "POST",
+                        data: gelenYorum,
+                        dataType: 'json',
+                        success: function (response) {
+                            if (response.Success) {
+                                $.notify(response.Message, "success");
+                                silTR.fadeOut(300, function () {
+                                    silTR.remove();
+                                })
+                            }
+                            else {
+                                $.notify(response.Message, "error");
+                            }
+
+
+                        }
+
+                    })
+                }
+            }
+        )
+
+    });
+</script>
+

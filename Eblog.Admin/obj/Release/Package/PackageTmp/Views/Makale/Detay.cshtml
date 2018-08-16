@@ -1,0 +1,218 @@
+﻿@model Eblog.Data.Model.makale
+
+@{
+    ViewBag.Title = "Detay";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<head>
+    <meta name="keywords" content="@foreach (var item in Model.etiket.ToList())
+                    {
+                        @(item.EtiketAdi + ",")
+                    }">
+</head>
+<div id="primary" class="content-area with-sidebar">
+    <!-- site-content -->
+    <div id="content" class="site-content" role="main">
+        <!-- .hentry -->
+        <article class="hentry post single-post">
+
+
+            <!-- .entry-content -->
+            <div class="entry-content">
+                @if (Convert.ToInt32(Session["ID"]) == Model.KullaniciID)
+                {
+                    <a style="float:right;color:black" href="/Makale/Duzenle/@Model.ID">Düzenle</a>
+                }
+                <p class="post">@Html.Raw(Model.Icerik)</p>
+
+                <!-- .post-tags -->
+                <div class="post-tags tagcloud">
+
+
+                    @foreach (var item in Model.etiket.ToList())
+                    {
+                        <a href="#" rel="tag">@item.EtiketAdi</a>
+                    }
+
+                </div>
+                <span class="cat-links">
+                    <a href="#" title="Yetki" rel="category tag">@Model.kategori.KategoriAdi</a>
+                </span>
+                <!-- .post-tags -->
+                <!-- .share-links -->
+                <div class="share-links">
+
+                    <h3>Makaleyi Sosyal Medyada Paylaş</h3>
+
+                    <a rel="nofollow" target="_blank" href="mailto:?subject=Bu Makaleyi görmeni istiyorum&amp;body=@Model.Baslik - http://e-bilge.net/@Url.Action("Duzenle","Makale", new {ID=Model.ID})" title="Makaleyi Mail At"><i class="pw-icon-mail"></i></a>
+
+                    <a rel="nofollow" target="_blank" href="http://twitter.com/home?status=Currently%20reading:%20'@Model.Baslik'%20http://e-bilge.net/@Url.Action("Duzenle","Makale", new {ID=Model.ID})" title="Makaleyi takipçilerinle paylaş"><i class="pw-icon-twitter"></i></a>
+
+                    <a rel="nofollow" target="_blank" href="http://www.facebook.com/sharer.php?u=http://e-bilge.net/@Url.Action("Duzenle","Makale", new {ID=Model.ID})&amp;t=@Model.Baslik" title="Makaleyi Faceook'ta paylaş"><i class="pw-icon-facebook"></i></a>
+
+                    <a rel="nofollow" target="_blank" href="https://plus.google.com/share?url=http://e-bilge.net/@Url.Action("Duzenle","Makale", new {ID=Model.ID})" title="Google+ da paylaş"><i class="pw-icon-gplus"></i></a>
+
+                </div>
+                <!-- .share-links -->
+                <!-- .about-author -->
+                <aside class="about-author">
+
+                    <h3>Yazar Hakkında</h3>
+
+                    <!-- .author-bio -->
+                    <div class="author-bio">
+
+                        <!-- .author-img -->
+                        <div class="author-img">
+                            <a href="#"><img alt="@Model.kullanici.AdSoyad" src="@Model.kullanici.Foto" class="avatar" width="128px" height="128px"></a>
+                        </div>
+                        <!-- .author-img -->
+                        <!-- .author-info -->
+                        <div class="author-info">
+                            <h4 class="author-name">@Model.kullanici.AdSoyad</h4>
+
+                            <span class="cat-links">
+                                <a href="#" title="Yetki" rel="category tag">@Model.kullanici.yetki.YetkiAdi</a>
+                            </span>
+
+                        </div>
+                        <!-- .author-info -->
+
+                    </div>
+                    <!-- .author-bio -->
+
+                </aside>
+                <!-- .about-author -->
+
+
+
+            </div>
+            <!-- .entry-content -->
+
+
+
+        </article>
+        <!-- .hentry -->
+        <!-- #comments -->
+        <div id="comments" class="comments-area">
+
+            <h3></h3>
+
+
+            <!-- .commentlist -->
+            <ol class="commentlist">
+                @foreach (var item in Model.yorum.ToList())
+                {
+
+                    if (item.Onay == true)
+                    {
+                        <li class="comment even thread-even depth-1">
+
+                            <!-- #comment-## -->
+                            <article class="comment">
+
+                                <!-- .comment-meta -->
+                                <header class="comment-meta comment-author vcard">
+                                    <img alt="" src="@item.kullanici.Foto" class="avatar" height="75" width="75">
+                                    <cite class="fn"><a href="#" rel="external nofollow" class="url">@item.kullanici.AdSoyad</a></cite>
+                                    <span class="comment-date">
+                                        @item.Tarih
+                                        @if (Convert.ToInt32(Session["ID"]) == item.KullaniciID)
+                                        {
+                                            <span class="comment-edit-link">
+                                                <a href="@Url.Action("YorumSil","Home", new {ID=item.ID})">Sil</a>
+                                            </span>
+                                        }
+                                </header>
+                                <!-- .comment-meta -->
+                                <!-- .comment-content -->
+                                <section class="comment-content comment">
+                                    <p>@item.Icerik</p>
+                                </section>
+                                <!-- .comment-content -->
+
+
+                            </article>
+                            <!-- #comment-## -->
+
+                        </li>
+                        <!-- .comment depth-1 -->
+                    }
+                }
+
+            </ol>
+            <!-- .commentlist -->
+            @if (Session["ID"] != null)
+            {
+                <!-- #respond -->
+                <div id="respond">
+
+                    <h3 id="reply-title">Yorum Yap <small><a rel="nofollow" id="cancel-comment-reply-link" href="#" style="display:none;">Yorum Yap</a></small></h3>
+
+                    <!-- .commentform -->
+
+                    <form id="commentform">
+
+
+
+                        <p class="comment-form-comment">
+                            <label for="comment">Mesaj</label>
+                            <textarea id="yorum" name="comment" rows="3" typeof="text" aria-required="true"></textarea>
+                        </p>
+
+
+
+                        <p class="form-submit">
+                            <button type="submit" name="submit" id="gonder" class="button primary">Yorum Yap</button>
+                        </p>
+
+                    </form>
+                    <!-- .commentform -->
+
+                </div>
+                <!-- #respond -->
+            }
+            else
+            {
+                <h2>Makaleye Yorum Eklemek için Üye Girişi Yapmalısınız.</h2>
+                <p><a href="@Url.Action("Login","Home")" class="btn btn-default btn-sm btn-category">Giriş Yap</a></p>
+            }
+        </div>
+        <!-- #comments -->
+    </div>
+</div>
+
+@Html.Partial("_UserRightS")
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#gonder").click(function () {
+            var yorumunuz = $("#yorum").val();
+            $.ajax({
+                url: '/Home/YorumYap/',
+                data: { yorum:yorumunuz, MakaleID : @Model.ID },
+                type: 'POST',
+                dataType: 'json',
+                success: function (data) {
+                    alert("Yorum Başarıyla Gönderildi. Lütfen Editör Onayını Bekleyiniz." + "Yorum:" + yorumunuz);}
+            });
+
+        });
+    })
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.ajax({
+            url: '/Home/Okunma/',
+            data: { MakaleID:@Model.ID},
+            type: 'POST',
+        });
+    })
+</script>
+
+
+
+

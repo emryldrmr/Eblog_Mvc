@@ -1,0 +1,15 @@
+﻿@model List<Eblog.Data.Model.kullanici>
+
+@foreach (var item in Model)
+{
+    <ul>
+        <li>
+            <a href="#">
+                <img src="@item.Foto" alt="@item.AdSoyad" class="tptn_thumb" width="150px" height="150px">
+            </a>
+            <span class="tptn_after_thumb">
+                <a href="#" class="tptn_link"><span class="tptn_title">@item.AdSoyad&nbsp;<b style="font-size:xx-small">(@item.yetki.YetkiAdi)</b></span></a>
+            </span>
+        </li>
+    </ul>
+}

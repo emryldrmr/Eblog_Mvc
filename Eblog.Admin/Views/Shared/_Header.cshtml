@@ -1,0 +1,68 @@
+﻿<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Menü</span>
+                <span class="icon-bar bar1"></span>
+                <span class="icon-bar bar2"></span>
+                <span class="icon-bar bar3"></span>
+            </button>
+            <a class="navbar-brand" href="#">@ViewBag.Title</a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="ti-book"></i>
+                        <p class="notification"></p>
+                        <p>Makale</p>
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="@Url.Action("Ekle","Makale")">Makale Ekle</a></li>
+                        <li><a href="#">Eklenecek</a></li>
+                    </ul>
+                    </a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="ti-list"></i>
+                        <p class="notification"></p>
+                        <p>Kategori</p>
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        @Html.Action("setKategori", "Home")
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="ti-bell"></i>
+                        <p class="notification"></p>
+                        @if (Session["ID"] != null)
+                        {
+                            <p>@Session["AdSoyad"]</p>
+                        }
+                        else
+                        {
+                            <p>Üyelik</p>
+                        }
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            @if (Session["ID"] == null)
+                            {
+                                <li><a href="/Home/Login/">Giriş Yap</a></li>
+                                <li><a href="/Home/Kayit/">Üye Ol</a></li>
+                            }
+                            else
+                            {
+                                <li><a href="/Home/ProfilGoster/@Session["ID"]">Profilim</a></li>
+                                <li><a href="@Url.Action("Cikis", "Home")">Çıkış</a></li>
+                            }
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>

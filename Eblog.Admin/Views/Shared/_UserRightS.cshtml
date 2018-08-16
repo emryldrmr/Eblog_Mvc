@@ -1,0 +1,50 @@
+﻿<div id="secondary" class="widget-area sidebar" role="complementary">
+
+    <aside class="widget widget_widget_tptn_pop">
+        <h3 class="widget-title">En Çok Okunanlar</h3>
+        <div class="tptn_posts tptn_posts_widget">
+
+            @Html.Action("setMakaleOkunma", "Home")
+
+        </div>
+    </aside>
+    <!-- widget : text -->
+
+    <aside class="widget widget_text">
+        <h3 class="widget-title">Sosyal Medya</h3>
+        <div class="textwidget">
+            <p>
+                <a class="social-link facebook" href="https://www.facebook.com/"></a>
+                <a class="social-link twitter" href="https://twitter.com/"></a>
+                <a class="social-link dribbble" href="#"></a>
+                <a class="social-link instagram" href="https://www.instagram.com/"></a>
+            </p>
+        </div>
+    </aside>
+
+
+    <!-- widget : categories -->
+    <aside class="widget widget_categories">
+        <h3 class="widget-title">Kategori</h3>
+        @Html.Action("setKategori", "Home")
+    </aside>
+    <!-- widget : categories -->
+    <aside class="widget widget_widget_tptn_pop">
+        <h3 class="widget-title">Yazarlar</h3>
+        <div class="tptn_posts tptn_posts_widget">
+
+            @Html.Action("setKullanici", "Home")
+
+        </div>
+    </aside>
+    <!-- widget : text -->
+    <!-- widget : text -->
+    <aside class="widget widget_text">
+        <!--<h3 class="widget-title">BANNER</h3>-->
+        <div class="textwidget">
+            <a href="#"><img src="~/User/images/blog/banner.jpg" alt="banner"></a>
+        </div>
+    </aside>
+
+
+</div>

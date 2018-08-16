@@ -1,0 +1,9 @@
+﻿<div class="search-section center-block">
+    @using (Html.BeginForm("Ara", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+    <form>
+        <input type="text" class="form-control" id="Ara" name="Ara" placeholder="Ara">
+        <button type="submit" value="Ara" class="btn btn-default btn-xs" title="Aramalarınız Makale Başlık Olarak Sıralanacaktır."><i class="fa fa-search"></i></button>
+    </form>
+    }
+</div>

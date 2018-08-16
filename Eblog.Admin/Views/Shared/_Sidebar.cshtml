@@ -1,0 +1,58 @@
+﻿<div class="sidebar" data-background-color="white" data-active-color="danger">
+
+    <div class="sidebar-wrapper">
+        <div class="logo">
+            <a href="@Url.Action("Index","Home")" class="simple-text">
+                BAŞLIK
+            </a>
+        </div>
+        <ul class="nav">
+            <li class="active">
+                <a href="@Url.Action("Index","Home")">
+                    <i class="ti-dashboard"></i>
+                    <p>Anasayfa</p>
+                </a>
+            </li>
+            @if (Convert.ToInt32(Session["Rol"]) == 1 || Convert.ToInt32(Session["Rol"]) == 2)
+            {
+                <li>
+                    <a href="@Url.Action("Index", "Kategori")">
+                        <i class="ti-view-list-alt"></i>
+                        <p>Kategori</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Kullanici")">
+                        <i class="ti-user"></i>
+                        <p>Kullanıcı</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Makale")">
+                        <i class="ti-text"></i>
+                        <p>Makale</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Yorum")">
+                        <i class="ti-comment"></i>
+                        <p>Yorum</p>
+                    </a>
+                </li>
+            }
+            <li>
+                <a href="@Url.Action("Hakkimizda", "Home")">
+                    <i class="ti-info-alt"></i>
+                    <p>Hakkımızda</p>
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("BizeUlasin", "Home")">
+                    <i class="ti-mobile"></i>
+                    <p>Bize Ulaşın</p>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+</div>

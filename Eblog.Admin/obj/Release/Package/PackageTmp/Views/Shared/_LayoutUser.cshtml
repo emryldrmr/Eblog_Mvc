@@ -1,0 +1,232 @@
+﻿<!doctype html>
+<html lang="en" class="minimal-style is-menu-fixed is-always-fixed is-selection-shareable blog-animated header-light header-small" data-effect="slideUp">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Ebilge, ebilge, ebilgenet, ebilge.net, birikim, birikimk12, birikim blog">
+    <meta name="keywords" content="ebilge">
+    <meta name="author" content="EBilge.Net, bilgi[at]ebilge.net">
+    <!-- FAV and TOUCH ICONS -->
+    <link rel="shortcut icon" href="../images/favicon.ico">
+    <link rel="apple-touch-icon" href="~/images/favicon.png" />
+    <SCRIPT LANGUAGE='JavaScript'>
+
+        var default1 = "Ebilge.NET | ";
+        var text1 = "Ebilge | Eğitim";
+        var text2 = "Ebilge | Bilim";
+        var text3 = "Ebilge | Gelişim";
+        var changeRate = 2000; // 1000 = 1 second
+        var messageNumber = 0;
+
+        function changeStatus() {
+            if (messageNumber == 0) {
+                window.status = default1;
+                document.title = default1;
+            }
+            else if (messageNumber == 1) {
+                window.status = text1;
+                document.title = text1;
+            }
+            else if (messageNumber == 2) {
+                window.status = text2;
+                document.title = text2;
+            }
+            else if (messageNumber == 3) {
+                window.status = text3;
+                document.title = text3;
+                messageNumber = 0;
+            }
+
+            messageNumber++;
+            setTimeout("changeStatus();", changeRate);
+
+        }
+
+        changeStatus();
+
+    </SCRIPT>
+    <title>.: E-BİLGE.NET :. | EĞİTİM | BİLİM | GELİŞİM</title>
+
+
+    <!-- FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Noto+Sans:400,400i,700,700i|Poppins:300,400,500,600,700" rel="stylesheet">
+
+    <!-- STYLES -->
+    <link href="~/User/css/fonts/fontello/css/fontello.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/User/js/jquery.magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css" />
+    <link href="~/User/js/jquery.fluidbox/fluidbox.css" rel="stylesheet" type="text/css" />
+    <link href="~/User/js/owl-carousel/owl.carousel.css" rel="stylesheet" type="text/css" />
+    <link href="~/User/js/selection-sharer/selection-sharer.css" rel="stylesheet" type="text/css" />
+    <link href="~/User/css/rotate-words.css" rel="stylesheet" type="text/css" />
+    <link href="~/User/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="~/User/css/768.css" rel="stylesheet" type="text/css" />
+    <link href="~/User/css/992.css" rel="stylesheet" type="text/css" />
+    <link href="~/User/js/shortcodes/shortcodes.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-tagsinput.css" rel="stylesheet" />
+    <link href="~/Content/sweetalert.css" rel="stylesheet" />
+
+
+
+    <script src="~/User/js/jquery-3.1.1.min.js"></script>
+    <!-- INITIAL SCRIPTS -->
+    <script src="~/User/js/modernizr.min.js"></script>
+
+</head>
+<body class="  ">
+    <!-- page -->
+    <div id="page" class="hfeed site">
+
+        <!-- header -->
+        <header id="masthead" class="site-header" role="banner">
+
+
+            <!-- site-navigation -->
+            @Html.Partial("_Sign")
+            <!-- site-navigation -->
+
+
+
+
+
+             
+        </header>
+        <!-- header -->
+        <!-- site-main -->
+        <div id="main" class="site-main">
+
+
+
+
+
+
+            <!-- post-slider -->
+            <div class="col-md-12">
+                <marquee behavior=alternate><img src="~/images/egitim.png" />
+                                            <img src="~/images/bilim.png" />
+                                            <img src="~/images/gelisim.png" /></marquee>
+            </div>
+            
+            <!-- post-slider -->
+            <!-- InstanceBeginEditable name="TopContent" -->
+            <!-- InstanceEndEditable -->
+
+
+
+
+
+
+
+
+            <div class="layout-medium">
+                @RenderBody()
+                <!-- primary -->
+                <!-- #secondary -->
+                @RenderSection("_UserRightS", required: false)
+
+                <!-- #secondary -->
+            </div>
+            <!-- layout -->
+
+
+        </div>
+        <!-- site-main -->
+        <!-- site-footer -->
+        <footer id="colophon" class="site-footer" role="contentinfo">
+
+            <!-- layout-medium -->
+            <div class="layout-medium">
+
+
+                <!-- site-title-wrap -->
+                <div class="site-title-wrap">
+
+
+
+
+                    <!-- site-title : image-logo -->
+                    <h1 class="site-title">
+                        <a href="/Blog/Index/" rel="home">
+                            @*<img src="~/User/images/site/logo.png" alt="logo">*@
+                            <img src="~/images/logo2.png" alt="logo">
+                        </a>
+                    </h1>
+                    <!-- site-title -->
+
+                    <p class="site-description">Eğitim - Bilim - Gelişim</p>
+
+                </div>
+                <!-- site-title-wrap -->
+                <!-- footer-social -->
+                <div class="footer-social">
+
+                    <div class="textwidget">
+                        <a class="social-link facebook" href="https://www.facebook.com/birikimokullari/"></a>
+                        <a class="social-link twitter" href="https://twitter.com/brkmokullari"></a>
+                        <a class="social-link dribbble" href="http://birikim.k12.tr"></a>
+                        <a class="social-link instagram" href="https://www.instagram.com/birikimokullari/"></a>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+            <!-- layout-medium -->
+            <!-- .site-info -->
+            <div class="site-info">
+
+                <!-- layout-medium -->
+                <div class="layout-medium">
+
+                    <div class="textwidget">@DateTime.Now.Year &emsp;Tüm Hakları Saklıdır.<i class="pw-icon-heart"></i> <em>by</em> E-Bilge.NET</div>
+
+                </div>
+                <!-- layout-medium -->
+
+            </div>
+            <!-- .site-info -->
+
+
+
+        </footer>
+        <!-- site-footer -->
+
+    </div>
+    <!-- page -->
+    <!-- SCRIPTS -->
+    <script src="../../ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+        if (!window.jQuery) {
+            document.write('<script src="~/User/js/jquery-3.1.1.min.js"><\/script>');
+        }
+
+    </script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/bootbox.min.js"></script>
+    <script src="~/User/js/jquery-migrate-3.0.0.min.js"></script>
+    <script src="~/User/js/fastclick.js"></script>
+    <script src="~/User/js/jquery.fitvids.js"></script>
+    <script src="~/User/js/jquery.viewport.mini.js"></script>
+    <script src="~/User/js/jquery.waypoints.min.js"></script>
+    <script src="~/User/js/jquery-validation/jquery.validate.min.js"></script>
+    <script src="~/User/js/imagesloaded.pkgd.min.js"></script>
+    <script src="~/User/js/jquery.isotope.min.js"></script>
+    <script src="~/User/js/jquery.magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="~/User/js/jquery.fluidbox/jquery.fluidbox.min.js"></script>
+    <script src="~/User/js/owl-carousel/owl.carousel.min.js"></script>
+    <script src="~/User/js/selection-sharer/selection-sharer.js"></script>
+    <script src="~/User/js/socialstream.jquery.js"></script>
+    <script src="~/User/js/jquery.collagePlus/jquery.collagePlus.min.js"></script>
+    <script src="~/User/js/main.js"></script>
+    <script src="~/User/js/shortcodes/shortcodes.js"></script>
+    <script src="~/Scripts/bootstrap-tagsinput.js"></script>
+    <script src="~/Scripts/notify.js"></script>
+    <script src="~/Scripts/jquery.form.js"></script>
+    <script src="~/Scripts/sweetalert.min.js"></script>
+
+</body>
+
+</html>
